@@ -15,8 +15,13 @@ public class PatientServiceImpl
 	@Autowired
 	PatientRepo patientRepo;
 	
-	public List<Patient> getPatients()
+	public List<Patient> getAllPatients()
 	{
 		return patientRepo.findAll(); // select * from patients
+	}
+	
+	public Patient createPatient(Patient record)
+	{
+		return patientRepo.save(record);
 	}
 }

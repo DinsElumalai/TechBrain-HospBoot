@@ -8,5 +8,6 @@ import com.medical.hospboot.model.Patient;
 @Repository
 public interface PatientRepo extends JpaRepository<Patient, Long>
 {
+	
 
 }
