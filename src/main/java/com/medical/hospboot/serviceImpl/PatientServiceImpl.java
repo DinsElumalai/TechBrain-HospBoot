@@ -1,27 +1,39 @@
 package com.medical.hospboot.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.medical.hospboot.model.Patient;
-import com.medical.hospboot.service.PatientRepo;
+import com.medical.hospboot.service.PatientRepository;
 
 @Component
-public class PatientServiceImpl 
+public class PatientServiceImpl
 {
 
 	@Autowired
-	PatientRepo patientRepo;
+	PatientRepository patientRepo;
 	
 	public List<Patient> getAllPatients()
 	{
-		return patientRepo.findAll(); // select * from patients
+		return patientRepo.findAll();
 	}
 	
-	public Patient createPatient(Patient record)
+	public Patient insertPatient(Patient record)
 	{
 		return patientRepo.save(record);
 	}
+	
+	public Patient upatePatient(Patient record)
+	{
+		return patientRepo.save(record);
+	}
+	
+	public void deletePatient(long ptId)
+	{
+		patientRepo.deleteById(ptId);
+	}
+	
 }

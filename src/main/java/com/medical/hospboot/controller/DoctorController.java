@@ -12,38 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.medical.hospboot.model.Patient;
-import com.medical.hospboot.serviceImpl.PatientServiceImpl;
+import com.medical.hospboot.model.Doctor;
+import com.medical.hospboot.serviceImpl.DoctorServiceImpl;
 
 @RestController
 @RequestMapping("api/v1/hosp")
-public class PatientController 
-{
-	
+public class DoctorController {
+
 	@Autowired
-	PatientServiceImpl patientService;
+	DoctorServiceImpl doctorService;
 	
-	@GetMapping("/patients")
-	public List<Patient> getAllPatients()
+	@GetMapping("/doctors")
+	public List<Doctor> getAllDoctors()
 	{
-		return patientService.getAllPatients();
+		return doctorService.getAllDoctors();
 	}
 	
-	@PostMapping("/patients")
-	public Patient insertPatient(@RequestBody Patient record)
+	@PostMapping("/doctors")
+	public Doctor insertDoctor(@RequestBody Doctor record)
 	{
-		return patientService.insertPatient(record);
+		return doctorService.insertDoctor(record);
 	}
 
-	@PutMapping("/patients")
-	public Patient upatePatient(@RequestBody Patient record)
+	@PutMapping("/doctors")
+	public Doctor upateDoctor(@RequestBody Doctor record)
 	{
-		return patientService.upatePatient(record);
+		return doctorService.upateDoctor(record);
 	}
 	
-	@DeleteMapping("/patients/{ptId}")
-	public void deletePatient(@PathVariable long ptId)
+	@DeleteMapping("/doctors/{dtId}")
+	public void deleteDoctor(@PathVariable long dtId)
 	{
-		patientService.deletePatient(ptId);
+		doctorService.deleteDoctor(dtId);
 	}
 }

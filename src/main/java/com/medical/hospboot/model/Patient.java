@@ -1,94 +1,69 @@
 package com.medical.hospboot.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 @Entity
-@Table(name="patients")
-@EntityListeners(AuditingEntityListener.class)
+@Table(name = "patients")
 public class Patient 
 {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
-	private long ptId;
+	private long id;
 	@Column
 	private String ptName;
 	@Column
-	private String ptAge;
-	@Column
-	private String ptAddress;
-	@Column
-	private String ptAdmittedDpt;
+	private String mobileNo;
 	
-	public Patient()
-	{
-		
-	}
-
-	public Patient(long ptId, String ptName, String ptAge, String ptAddress, String ptAdmittedDpt) {
+	public Patient() {}
+	public Patient(String ptName, String mobileNo) {
 		super();
-		this.ptId = ptId;
 		this.ptName = ptName;
-		this.ptAge = ptAge;
-		this.ptAddress = ptAddress;
-		this.ptAdmittedDpt = ptAdmittedDpt;
+		this.mobileNo = mobileNo;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Patient [ptId=" + ptId + ", ptName=" + ptName + ", ptAge=" + ptAge + ", ptAddress=" + ptAddress
-				+ ", ptAdmittedDpt=" + ptAdmittedDpt + "]";
+		return "Patient [id=" + id + ", ptName=" + ptName + ", mobileNo=" + mobileNo + "]";/*, treatingDoctors="
+				+ treatingDoctors + "]";*/
 	}
-
-	public long getPtId() {
-		return ptId;
+	
+	public long getId() {
+		return id;
 	}
-
-	public void setPtId(long ptId) {
-		this.ptId = ptId;
+	public void setId(long id) {
+		this.id = id;
 	}
-
 	public String getPtName() {
 		return ptName;
 	}
-
 	public void setPtName(String ptName) {
 		this.ptName = ptName;
 	}
-
-	public String getPtAge() {
-		return ptAge;
+	public String getMobileNo() {
+		return mobileNo;
 	}
-
-	public void setPtAge(String ptAge) {
-		this.ptAge = ptAge;
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
 	}
-
-	public String getPtAddress() {
-		return ptAddress;
+	/*public List<Doctor> getTreatingDoctors() {
+		return treatingDoctors;
 	}
-
-	public void setPtAddress(String ptAddress) {
-		this.ptAddress = ptAddress;
-	}
-
-	public String getPtAdmittedDpt() {
-		return ptAdmittedDpt;
-	}
-
-	public void setPtAdmittedDpt(String ptAdmittedDpt) {
-		this.ptAdmittedDpt = ptAdmittedDpt;
-	}
-	
+	public void setTreatingDoctors(List<Doctor> treatingDoctors) {
+		this.treatingDoctors = treatingDoctors;
+	}*/
 	
 	
 }
